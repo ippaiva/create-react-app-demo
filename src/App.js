@@ -10,10 +10,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <ul>{ listItems }</ul>
-        <div>
-          <MoviesList />
-        </div>
         <hr />
         <DynamicMoviesList />
       </div>

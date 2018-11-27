@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ImprovedCard from '../ImprovedCard.js';
+import AddMovie from './AddMovie.js';
 
 class DynamicMoviesList extends Component {
   constructor() {
@@ -12,6 +13,15 @@ class DynamicMoviesList extends Component {
       ],
       showOscarAwarded: false
     }
+    this.addMovieHandler = this.addMovieHandler.bind(this);
+  }
+
+  addMovieHandler(theMovie) {
+    const moviesClone = [...this.state.movies];
+    moviesClone.push(theMovie);
+    this.setState({
+      movies: moviesClone
+    })
   }
 
   toggleMovies = () => {
@@ -35,6 +45,7 @@ class DynamicMoviesList extends Component {
 
     return (
       <div>
+        <AddMovie addTheMovie={this.addMovieHandler} />
         {
           filteredMovies.map((oneMovie, index) => {
             return <ImprovedCard key={index} {...oneMovie} clickToDelete={this.deleteMovieHandler.bind(this, index)} />
